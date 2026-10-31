@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB-9 Petshop | Sistem Persediaan Barang</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="paw">🐾</span><div><h2>AB-9 Petshop</h2><small>Healthy Pets, Happy Life</small></div></div>
+  <nav><a href="#beranda">Beranda</a><a href="#produk">Produk</a><a href="#stok">Stok</a><a href="#form">Tambah Barang</a></nav>
+  <input class="search" id="search" type="search" placeholder="Cari produk..." oninput="renderTable()">
+</header>
+
+<section class="hero" id="beranda">
+  <div><h1>Sistem Persediaan Barang<br>AB-9 Petshop</h1>
+  <p>Mengelola data barang dan persediaan pet shop dengan mudah, cepat, dan teratur.</p>
+  <button onclick="document.getElementById('stok').scrollIntoView({behavior:'smooth'})">Lihat Persediaan →</button></div>
+  <div class="animals" aria-label="Ilustrasi hewan">🐕 🐈</div>
+</section>
+
+<div class="container">
+  <div class="stats">
+    <div class="stat"><span>Total Jenis Produk</span><h2 id="totalProduk">0</h2></div>
+    <div class="stat"><span>Total Stok Barang</span><h2 id="totalStok">0</h2></div>
+    <div class="stat"><span>Stok Menipis</span><h2 id="stokMenipis">0</h2></div>
+    <div class="stat"><span>Kategori Produk</span><h2 id="totalKategori">0</h2></div>
+  </div>
+
+  <div class="content">
+    <aside class="sidebar">
+      <h3>🐾 Kategori Produk</h3>
+      <a href="#produk" onclick="filterKategori('Semua')">Semua Produk</a>
+      <a href="#produk" onclick="filterKategori('Makanan Hewan')">🍖 Makanan Hewan</a>
+      <a href="#produk" onclick="filterKategori('Pasir Kucing')">🐈 Pasir Kucing</a>
+      <a href="#produk" onclick="filterKategori('Vitamin & Obat')">💊 Vitamin & Obat</a>
+      <a href="#produk" onclick="filterKategori('Kandang')">🏠 Kandang</a>
+      <a href="#produk" onclick="filterKategori('Aksesori')">🎀 Aksesori</a>
+      <a href="#produk" onclick="filterKategori('Ikan & Reptil')">🐠 Ikan & Reptil</a>
+    </aside>
+
+    <main class="main">
+      <div class="section-title" id="produk"><h2>Produk Pilihan</h2><span>Contoh produk AB-9 Petshop</span></div>
+      <div class="products" id="productCards"></div>
+
+      <section class="panel" id="form">
+        <div class="section-title"><h2 id="formTitle">Form Tambah Barang</h2><span>Isi data barang di bawah ini</span></div>
+        <form id="productForm">
+          <div class="form-grid">
+            <div class="field"><label for="nama">Nama Barang</label><input id="nama" required placeholder="Contoh: Makanan kucing"></div>
+            <div class="field"><label for="kategori">Kategori</label>
+              <select id="kategori" required>
+                <option value="">Pilih kategori</option><option>Makanan Hewan</option><option>Pasir Kucing</option><option>Vitamin & Obat</option><option>Kandang</option><option>Aksesori</option><option>Ikan & Reptil</option>
+              </select>
+            </div>
+            <div class="field"><label for="harga">Harga (Rp)</label><input id="harga" type="number" min="0" required placeholder="85000"></div>
+            <div class="field"><label for="stok">Jumlah Stok</label><input id="stok" type="number" min="0" required placeholder="15"></div>
+          </div>
+          <div class="form-actions"><button type="submit" id="submitBtn">Simpan Barang</button><button type="reset" style="background:#77847c" onclick="resetEdit()">Bersihkan</button></div>
+          <div class="notice" id="notice"></div>
+        </form>
+      </section>
+
+      <section class="panel" id="stok">
+        <div class="section-title"><h2>Daftar Persediaan Barang</h2><span>Data stok produk</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>No.</th><th>Nama Barang</th><th>Kategori</th><th>Harga</th><th>Stok</th><th>Aksi</th></tr></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<footer><div><strong>🐾 AB-9 Petshop</strong><br><small>Healthy Pets, Happy Life</small></div><div>Beranda &nbsp; Produk &nbsp; Stok</div><small>© 2026 AB-9 Petshop</small></footer>
+
+<script src="script.js"></script>
+</body>
+</html>
